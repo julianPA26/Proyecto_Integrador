@@ -33,10 +33,24 @@ body {
 
 /* TODO: dale layout a .personajes-grid con CSS Grid o con Flexbox.
    Compara las dos versiones en "Grid vs Flex" antes de decidir cuál usar aquí. */
-.personajes-grid {
-}
 
+ 
+.personajes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+}
+  
+/*
+.personajes-grid{
+    display: flex;
+    flex-wrap: wrap ;
+    gap: 5px;
+}
+*/
 .personaje-card {
+  
   background: #172033;
   border-radius: 12px;
   overflow: hidden;

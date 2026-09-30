@@ -3,20 +3,80 @@
 // etiqueta...) y no solo ids. Por ejemplo: document.querySelector("#filtro-nombre").
 
 async function obtenerPersonajes() {
+
   // TODO: pide "https://rickandmortyapi.com/api/character" con fetch, conviértela
   // a JSON y devuelve el array de personajes (repasa el ejercicio 1 de la práctica).
+
+  const respuesta = await fetch();
+  const datos = await respuesta.json();
+  return datos.results;
 }
 
 function filtrarPorEstado(personajes, estado) {
   // TODO: si estado viene vacío, devuelve personajes tal cual. Si no, filtra
   // dejando solo los que coinciden (repasa el ejercicio 2 de la práctica).
+  if(!estado) return personajes;
+    return personajes.filter(function (personaje) {
+        return personaje.status.toLowerCase() === estado.toLowerCase();
+
+  });
 }
 
 function filtrarPorEspecie(personajes, especie) {
   // TODO: si especie viene vacía, devuelve personajes tal cual. Si no, filtra
   // dejando solo los que coinciden (repasa el ejercicio 3 de la práctica).
+  if(!especie) return personajes;
+  return personajes.filter(function (personaje) {
+        return personaje.species.toLowerCase() === especie.toLowerCase();
+
+  });
+
 }
 
+function obtenerNombres(personajes) {
+  return personajes.map(function (personaje) {
+    return personaje.name;
+  });
+}
+
+function buscarPorNombreExacto(personajes, nombre) {
+  return personajes.find(function (personaje) {
+    return personaje.name.toLowerCase() === nombre.toLowerCase();
+  });
+}
+
+function hayPersonajesMuertos(personajes) {
+  return personajes.some(function (personaje) {
+    return personaje.status === "Dead";
+  });
+}
+
+function todosVivos(personajes) {
+  return personajes.every(function (personaje) {
+    return personaje.status === "Alive";
+  });
+}
+
+function ordenarPorNombre(personajes) {
+  return [...personajes].sort(function (a, b) {
+    return a.name.localCompare(b.name);
+  });
+}
+
+
+function primeros(personajes, cantidad) {
+  return personaje.slice(0,cantidad);
+}
+
+function posicionDeNombre(nombres, nombre) {
+  return nombre.indexOf(nombre);
+}
+
+function contarVivos(personajes) {
+  return personajes.reduce(function (total, personaje) {
+    return personaje.status === "Alive"? total + 1: total;
+  }, 0);
+}
 let personajes = [];
 
 function aplicarFiltros() {
