@@ -7,7 +7,7 @@ async function obtenerPersonajes() {
   // TODO: pide "https://rickandmortyapi.com/api/character" con fetch, conviértela
   // a JSON y devuelve el array de personajes (repasa el ejercicio 1 de la práctica).
 
-  const respuesta = await fetch();
+  const respuesta = await fetch("https://rickandmortyapi.com/api/character");
   const datos = await respuesta.json();
   return datos.results;
 }
